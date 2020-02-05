@@ -1,3 +1,4 @@
+  
 -- Find buildings where a course is offered at least 3 times in the same room in that building
 with building_list as (
     select building, course_id, room_number, count(section.course_id) as times_had
@@ -13,7 +14,7 @@ with salary_info as(
     select AVG(salary) as Average, SUM(salary) as Sum, COUNT(ID) as Total_Insntructors
     from instructor
 )
-select (Average-(Sum/Total_Instructors))
+select (Average-(Sum/Total_Insntructors)), Average
 from salary_info;
 
 --Find the id and title of math courses that are not a prerequisite of any other courses
