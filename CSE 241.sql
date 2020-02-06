@@ -52,16 +52,14 @@ create table cssection (
     room_number varchar (7),
     time_slot_id varchar (4),
     primary key (course_id, sec_id, semester, year)
-    )
-    
+);
 create table csstudent (
     ID varchar (5),
     name varchar (20),
     dept_name varchar (20),
     tot_cred numeric (3,0),
     primary key (ID)
-    )
-    
+);
 create table cstakes(
     ID varchar (5),
     course_id varchar (8),
@@ -70,11 +68,7 @@ create table cstakes(
     year numeric (4,0),
     grade varchar (2),
     primary key (ID, course_id, sec_id, semester, year)
-)
-insert into cssection values (
+);
+insert into cssection (course_id, sec_id, semester, year, building, room_number, time_slot_id)
 select course_id, sec_id, semester, year, building, room_number, time_slot_id
-from section full  outer join course on section.course_id = course.course_id
-where dept_name = 'Comp. Sci.'
-)
-;
-    
+from section where section.course_id like 'CS%';
